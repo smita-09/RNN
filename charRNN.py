@@ -80,8 +80,9 @@ def sample(h, seed_ix, n):
     h = np.tanh(np.dot(Wxh, x) + np.dot(Whh, h) + bh) # (100* 15) and (15*1) , (100*100 and 100*1) so in total it will just be 100*1
     y = np.dot(Why, h) + by # makes sense
     p = np.exp(y) / np.sum(np.exp(y)) # makes sense
+    print("This is the fucking shape dammit!!!!!!!!!!!!", y.shape)
     ix = np.random.choice(range(vocab_size), p=p.ravel()) # just to select the next index based on the probabilty of the indices, nice use of random.choice
-    x = np.zeros((vocab_size, 1)) 
+    x = np.zeros((vocab_size, 1))   
     x[ix] = 1
     ixes.append(ix)
   return ixes
